@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🌍🍽 Global Food and Recipes
+Welcome to Global Food and Recipes, a Next.js application dedicated to exploring diverse cuisines from around the world. Discover new recipes, learn about different cultures, and enjoy a unique culinary journey!
 
 ## Getting Started
 
