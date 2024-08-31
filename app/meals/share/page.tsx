@@ -6,7 +6,9 @@ type Props = {};
 const SharePage = (props: Props) => {
   return (
     <PageWrapper>
-      <h2>Meal Share Page</h2>
+      <section className="h-screen bg-red-500 pt-32 w-full">
+        Meals Share Page
+      </section>
     </PageWrapper>
   );
 };

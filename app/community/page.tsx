@@ -6,7 +6,9 @@ type Props = {};
 const CommunityPage = (props: Props) => {
   return (
     <PageWrapper>
-      <h2>Community Page</h2>
+      <section className="h-screen bg-red-500 pt-32 w-full">
+        Community Page
+      </section>
     </PageWrapper>
   );
 };

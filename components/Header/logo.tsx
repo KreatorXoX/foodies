@@ -9,7 +9,7 @@ type Props = {};
 const Logo = (props: Props) => {
   return (
     <Link href={"/"}>
-      <Image src={logoImage} alt="logo" width={80} priority />
+      <Image src={logoImage} alt="logo" width={70} priority />
     </Link>
   );
 };

@@ -7,8 +7,8 @@ type Props = {};
 
 const MainHeader = (props: Props) => {
   return (
-    <div className="w-full fixed top-0 py-2 shadow-blue-900 shadow-md text-2xl">
-      <div className="w-full max-w-7xl mx-auto flex justify-center md:justify-between p-8 md:py-2 truncate">
+    <div className="w-full fixed top-0 md:text-xl z-10 bg-black">
+      <div className="w-full max-w-7xl mx-auto flex justify-center md:justify-between py-4 md:py-0 px-8 truncate">
         <div className="md:block hidden">
           <Logo />
         </div>
