@@ -34,7 +34,7 @@ const ImageSlideShow = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden w-full h-96 rounded-lg">
+    <div className="relative overflow-hidden w-2/3 mx-auto md:w-full h-56 md:h-96 rounded-lg">
       <div className="absolute inset-0 flex transition-transform duration-500 ease-in-out">
         {images.map((image, index) => (
           <Image
@@ -44,8 +44,7 @@ const ImageSlideShow = () => {
             className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
               index === currentImageIndex ? "opacity-100" : "opacity-0"
             }`}
-            layout="fill"
-            objectFit="cover"
+            fill
           />
         ))}
       </div>

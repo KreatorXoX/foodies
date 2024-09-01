@@ -5,36 +5,36 @@ import Link from "next/link";
 export default function Home() {
   return (
     <PageWrapper>
-      <section className="md:h-screen md:pt-32 pb-20 w-full flex flex-col justify-start gap-10 md:justify-evenly md:flex-row text-md sm:text-lg lg:text-2xl">
+      <section className=" md:pt-32 pt-20 md:pb-20 w-full flex flex-col justify-start gap-10 md:justify-evenly md:flex-row sm:text-lg lg:text-2xl pb-4">
         <div className="w-full flex items-center">
           <ImageSlideShow />
         </div>
         <div className=" w-full flex flex-col items-center justify-center gap-7 md:gap-10 lg:gap-20">
           <div className="font-bold tracking-wider text-center md:text-left">
             <div className="pb-3 md:pb-6 uppercase italic text-orange-400 tracking-widest">
-              <h2 className="text-4xl">Food heads</h2>
-              <h3 className="text-2xl">
+              <h2 className="text-2xl md:text-4xl">Food heads</h2>
+              <h3 className="text-base md:text-2xl">
                 Make & Share the best foods around the world
               </h3>
             </div>
-            <p>
+            <p className="text-base">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
               delectus voluptatum illo quod, doloribus, at perspiciatis ex
               reiciendis ipsum eius velit natus quisquam, error sequi deleniti.
               Corporis fugiat consequuntur veritatis!
             </p>
           </div>
-          <div className=" w-full flex flex-col gap-2 sm:gap-5 text-sm lg:text-lg">
-            <div className="flex items-center justify-evenly">
+          <div className=" w-full flex flex-col gap-5 text-sm lg:text-lg">
+            <div className="flex w-1/2 mx-auto gap-5 justify-center flex-col md:flex-row">
               <Link
                 href={"/about"}
-                className="lg:px-4 px-1 py-1 bg-blue-500 rounded-lg hover:bg-blue-700 transition  sm:min-w-[8rem] lg:min-w-[12rem] text-center"
+                className="lg:px-4 px-2 py-1 bg-blue-500 rounded-lg hover:bg-blue-700 transition  sm:min-w-[8rem] lg:min-w-[12rem] text-center"
               >
                 About Us
               </Link>
               <Link
                 href={"/meals"}
-                className="lg:px-4 px-1 py-1 bg-orange-500 rounded-lg hover:bg-orange-700 transition text-center sm:min-w-[8rem] lg:min-w-[12rem]"
+                className="lg:px-4 px-2 py-1 bg-orange-500 rounded-lg hover:bg-orange-700 transition text-center sm:min-w-[8rem] lg:min-w-[12rem]"
               >
                 Explore Meals
               </Link>
