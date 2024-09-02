@@ -20,11 +20,7 @@ const CommunityPage = (props: Props) => {
         >
           <h1>
             One shared passion:{" "}
-            <span
-              className={
-                "bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent font-extrabold"
-              }
-            >
+            <span className="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
               Food
             </span>
           </h1>
