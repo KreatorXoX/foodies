@@ -1,15 +1,9 @@
 import React from "react";
 import MealItem from "./meal-item";
+import { Meal } from "@/lib/meals";
 
 type Props = {
-  meals: {
-    id: string;
-    title: string;
-    slug: string;
-    image: string;
-    summary: string;
-    creator: string;
-  }[];
+  meals: Meal[];
 };
 
 const MealList = ({ meals }: Props) => {

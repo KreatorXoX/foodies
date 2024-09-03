@@ -2,20 +2,17 @@ import MealList from "@/components/Meals/meal-list";
 import PageWrapper from "@/components/page-wrapper";
 import { getMeals } from "@/lib/meals";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+import MealsLoadingIndicator from "./meals-loading";
 
 type Props = {};
-type Meal = {
-  id: string;
-  title: string;
-  slug: string;
-  image: string;
-  summary: string;
-  creator: string;
+
+const Meals = async () => {
+  const meals = await getMeals();
+  return <MealList meals={meals} />;
 };
+
 const MealsPage = async (props: Props) => {
-  const meals = (await getMeals()) as Meal[];
-  console.log(meals);
   return (
     <PageWrapper>
       <section className="pt-20 md:pt-32 md:pb-20 w-full flex flex-col lg:gap-10 items-center pb-4">
@@ -41,7 +38,9 @@ const MealsPage = async (props: Props) => {
         </header>
 
         <main>
-          <MealList meals={meals} />
+          <Suspense fallback={<MealsLoadingIndicator />}>
+            <Meals />
+          </Suspense>
         </main>
       </section>
     </PageWrapper>

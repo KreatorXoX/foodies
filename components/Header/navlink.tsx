@@ -14,8 +14,8 @@ const NavLink = ({ href, children }: Props) => {
     <Link
       href={href}
       className={`
-    hover:text-blue-500 transition
-     ${isActive ? "underline underline-offset-4 text-blue-500" : ""}`}
+    hover:text-yellow-600 transition
+     ${isActive ? "underline underline-offset-4 text-yellow-600" : ""}`}
     >
       {children}
     </Link>

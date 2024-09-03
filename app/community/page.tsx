@@ -12,19 +12,19 @@ type Props = {};
 const CommunityPage = (props: Props) => {
   return (
     <PageWrapper>
-      <section className="pt-20 lg:pt-32 md:pb-20 w-full flex flex-col lg:gap-10 items-center pb-4">
+      <section className="pt-20 md:pt-32 md:pb-20 w-full flex flex-col lg:gap-10 items-center pb-4">
         <header
           className={
-            "text-center text-2xl lg:text-5xl flex flex-col gap-5 font-serif"
+            "text-center text-lg md:text-xl flex flex-col gap-5 font-serif"
           }
         >
-          <h1>
+          <h1 className="text-4xl md:text-5xl">
             One shared passion:{" "}
             <span className="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
               Food
             </span>
           </h1>
-          <p className="text-base lg:text-lg">
+          <p className="">
             Join our community and share your favorite recipes!
           </p>
         </header>

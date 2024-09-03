@@ -1,15 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Meal } from "@/lib/meals";
 
 type Props = {
-  meal: {
-    id: string;
-    title: string;
-    slug: string;
-    image: string;
-    summary: string;
-    creator: string;
-  };
+  meal: Meal;
 };
 
 const MealItem = ({ meal }: Props) => {
@@ -27,6 +21,7 @@ const MealItem = ({ meal }: Props) => {
             fill
             className="w-full"
             style={{ objectFit: "cover" }}
+            sizes={"(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"}
           />
         </div>
         <div className="px-4 mt-4 font-extrabold tracking-wider">
