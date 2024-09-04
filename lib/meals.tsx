@@ -4,6 +4,7 @@ const db = sql("meals.db");
 
 export type Meal = {
   id: string;
+  creator_email: string;
   title: string;
   slug: string;
   image: string;

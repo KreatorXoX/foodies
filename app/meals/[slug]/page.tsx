@@ -42,8 +42,8 @@ const MealDetailPage = async ({ params }: Props) => {
             <h1 className="text-3xl font-bold ">{meal.title}</h1>
             <p className="text-lg text-gray-400 pb-2">
               by{" "}
-              <span className="text-blue-400 italic font-extrabold">
-                {meal.creator}
+              <span className="text-blue-400 italic font-extrabold underline">
+                <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
               </span>
             </p>
             <p className="text-lg text-gray-400 italic">{meal.summary}</p>
