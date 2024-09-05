@@ -3,7 +3,7 @@ import fs from "node:fs";
 const db = sql("meals.db");
 
 export type Meal = {
-  id: string;
+  id?: string;
   creator_email: string;
   title: string;
   slug: string;
@@ -14,7 +14,6 @@ export type Meal = {
 };
 
 export type FormMeal = {
-  id: string;
   creator_email: string;
   title: string;
   slug: string;

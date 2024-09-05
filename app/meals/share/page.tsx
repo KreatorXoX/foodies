@@ -1,11 +1,15 @@
+"use client";
+import FormSubmitButton from "@/components/Meals/meal-form-submit-button";
 import MealPicker from "@/components/Meals/meal-picker";
 import PageWrapper from "@/components/page-wrapper";
 import { addNewMeal } from "@/lib/actions";
-import React from "react";
+import React, { useActionState } from "react";
+import { useFormState } from "react-dom";
 
 type Props = {};
 
 const SharePage = (props: Props) => {
+  const [state, formAction] = useFormState(addNewMeal, { message: null });
   return (
     <PageWrapper>
       <section className="pt-20 md:pt-32 md:pb-20 w-full flex flex-col items-center lg:items-start lg:flex-row gap-10 pb-4">
@@ -31,20 +35,21 @@ const SharePage = (props: Props) => {
           }
         >
           <form
-            action={addNewMeal}
+            action={formAction}
             className={
-              "flex flex-col w-full gap-4  md:border md:border-yellow-600 px-4 md:px-10 py-5 rounded-md "
+              "flex relative flex-col w-full gap-4  md:border md:border-yellow-600 px-4 md:px-10 py-10 rounded-md "
             }
           >
+            {state.message && (
+              <div className="absolute top-2 left-4 text-red-500 italic text-sm font-semibold">
+                {"*** "}
+                {state.message}
+              </div>
+            )}
             <div className={"flex flex-row justify-between items-center"}>
               <MealPicker />
 
-              <button
-                type="submit"
-                className="text-white bg-green-600 rounded-md py-2 px-10 hover:bg-green-800 transition"
-              >
-                Share Meal
-              </button>
+              <FormSubmitButton />
             </div>
             <div className={"flex flex-col sm:flex-row justify-between gap-4"}>
               <div className="w-full">
