@@ -1,5 +1,6 @@
 import MealPicker from "@/components/Meals/meal-picker";
 import PageWrapper from "@/components/page-wrapper";
+import { addNewMeal } from "@/lib/actions";
 import React from "react";
 
 type Props = {};
@@ -30,6 +31,7 @@ const SharePage = (props: Props) => {
           }
         >
           <form
+            action={addNewMeal}
             className={
               "flex flex-col w-full gap-4  md:border md:border-yellow-600 px-4 md:px-10 py-5 rounded-md "
             }
