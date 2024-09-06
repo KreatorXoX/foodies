@@ -1,15 +1,19 @@
 "use client";
+
+import React from "react";
+import { useFormState } from "react-dom";
+
 import FormSubmitButton from "@/components/Meals/meal-form-submit-button";
 import MealPicker from "@/components/Meals/meal-picker";
 import PageWrapper from "@/components/page-wrapper";
+
 import { addNewMeal } from "@/lib/actions";
-import React, { useActionState } from "react";
-import { useFormState } from "react-dom";
 
 type Props = {};
 
 const SharePage = (props: Props) => {
   const [state, formAction] = useFormState(addNewMeal, { message: null });
+
   return (
     <PageWrapper>
       <section className="pt-20 md:pt-32 md:pb-20 w-full flex flex-col items-center lg:items-start lg:flex-row gap-10 pb-4">

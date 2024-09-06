@@ -1,12 +1,23 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { Meal } from "@/lib/meals";
+
+import { Meal, deleteMeal } from "@/lib/actions";
 
 type Props = {
   meal: Meal;
 };
 
 const MealItem = ({ meal }: Props) => {
+  const deleteMealHandler = () => {
+    // if (meal.id) deleteMeal(meal.id);
+    // else console.log("No id found");
+
+    if (meal.slug) deleteMeal(meal.slug, meal.public_id);
+    else console.log("No slug found");
+  };
+
   return (
     <article
       className={
@@ -16,7 +27,8 @@ const MealItem = ({ meal }: Props) => {
       <header>
         <div className="relative h-32 md:h-48">
           <Image
-            src={meal.image}
+            priority
+            src={meal.image as string}
             alt={meal.title}
             fill
             className="w-full"
@@ -33,13 +45,20 @@ const MealItem = ({ meal }: Props) => {
       </header>
       <div className={"flex flex-col justify-between h-full text-slate-200"}>
         <p className={"px-4 pt-4 line-clamp-3"}>{meal.summary}</p>
-        <div className={"p-4 text-center md:text-right"}>
+        <div
+          className={
+            "p-4 text-center md:text-right flex justify-between items-center"
+          }
+        >
           <Link
             href={`/meals/${meal.slug}`}
             className="text-white inline-block mt-4 px-2 py-1 rounded-md bg-red-700  hover:bg-red-900 transition"
           >
             View Details
           </Link>
+          <button className="text-red-500" onClick={deleteMealHandler}>
+            X
+          </button>
         </div>
       </div>
     </article>

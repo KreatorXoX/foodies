@@ -1,7 +1,30 @@
 "use server";
-import { redirect } from "next/navigation";
-import { FormMeal, saveMeal } from "./meals";
+
 import { revalidatePath } from "next/cache";
+
+import { v2 as cloudinary } from "cloudinary";
+
+import { removeMeal, saveMeal } from "./meals";
+import { redirect } from "next/navigation";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+  secure: true,
+});
+
+export type Meal = {
+  id?: string;
+  creator_email: string;
+  title: string;
+  slug: string;
+  image: string | File;
+  public_id: string;
+  summary: string;
+  creator: string;
+  instructions: string;
+};
 
 export const addNewMeal = async (
   prevState: { message: string | null },
@@ -54,13 +77,56 @@ export const addNewMeal = async (
     image,
     creator,
     creator_email: creatorEmail,
-  } as FormMeal;
+  } as Meal;
 
   try {
-    await saveMeal(meal);
+    const imageFile = image;
+    const arrayBuffer = await imageFile.arrayBuffer();
+    const buffer = new Uint8Array(arrayBuffer);
+
+    await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          {
+            tags: ["meals-images"],
+            folder: "meals",
+          },
+          async function (error, result) {
+            if (error) {
+              reject(error);
+              return;
+            }
+            meal.image = result!.secure_url;
+            meal.public_id = result!.public_id;
+
+            await saveMeal(meal);
+            resolve(result);
+          }
+        )
+        .end(buffer);
+    });
+
     revalidatePath("/meals");
-    return { message: null };
-  } catch (error) {
+  } catch (error: any) {
     return { message: "Error creating meal" };
   }
+  redirect("/meals");
+  return { message: null };
+};
+
+export const deleteMeal = async (slug: string, public_id: string) => {
+  try {
+    await cloudinary.uploader.destroy(public_id, async (error, result) => {
+      if (error) {
+        console.error("Error deleting image:", error);
+        return;
+      }
+      console.log("Image deleted successfully:", result);
+      await removeMeal(slug);
+    });
+  } catch (error) {
+    console.error("Error deleting image:", error);
+    throw error;
+  }
+  revalidatePath("/meals");
 };

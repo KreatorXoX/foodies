@@ -9,6 +9,25 @@ type Props = {};
 
 const Meals = async () => {
   const meals = await getMeals();
+
+  if (!meals || meals.length === 0) {
+    console.log("no meals");
+    return (
+      <div className=" py-20 flex-col flex items-center gap-3 text-red-500 text-center px-10">
+        <h2 className=" text-2xl font-bold">--- No meals found ---</h2>
+        <p>Help us grow our collection of delicious meals by clicking below</p>
+
+        <p className="text-lg md:text-xl font-serif p-2 rounded-md bg-red-500 hover:bg-red-700 transition">
+          <Link
+            href={`/meals/share`}
+            className="text-yellow-200 hover:text-yellow-100"
+          >
+            Share Now
+          </Link>
+        </p>
+      </div>
+    );
+  }
   return <MealList meals={meals} />;
 };
 
