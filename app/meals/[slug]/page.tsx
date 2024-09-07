@@ -10,6 +10,18 @@ type Props = {
   };
 };
 
+export async function generateMetadata({ params }: Props) {
+  const meal = await getMeal(params.slug);
+
+  if (!meal) {
+    notFound();
+  }
+  return {
+    title: `${meal.title} | Foodsies`,
+    description: `This is a detailed view of ${meal.title} recipe created by ${meal.creator}`,
+  };
+}
+
 const MealDetailPage = async ({ params }: Props) => {
   const meal = await getMeal(params.slug);
 
@@ -31,7 +43,7 @@ const MealDetailPage = async ({ params }: Props) => {
         <div className="flex sm:justify-start gap-5 sm:gap-10 w-full sm:flex-row flex-col items-center sm:items-start">
           <div className="relative w-[20rem] h-[16rem] md:h-[20rem]">
             <Image
-              src={meal.image}
+              src={meal.image as string}
               fill
               alt={meal.title}
               className="rounded-xl"

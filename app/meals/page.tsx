@@ -4,6 +4,13 @@ import { getMeals } from "@/lib/meals";
 import Link from "next/link";
 import React, { Suspense } from "react";
 import MealsLoadingIndicator from "./meals-loading";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All Meals' Recipes",
+  description:
+    "Choose your favorite recipe and cook it yourself. It is easy and rewarding to bring a touch of the Renaissance into your kitchen, where every meal becomes a masterpiece.",
+};
 
 type Props = {};
 

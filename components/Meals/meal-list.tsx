@@ -1,6 +1,8 @@
 import React from "react";
+
+import { Meal } from "@/lib/actions";
+
 import MealItem from "./meal-item";
-import { Meal } from "@/lib/meals";
 
 type Props = {
   meals: Meal[];
